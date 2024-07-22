@@ -15,8 +15,7 @@ def home(request):
         item = get_object_or_404(List, id=list_id)
         item_name = item.name  # Optional: Get the name for the success message
         item.delete()
-        messages.success(request, f'Item "{
-            item_name.title()}" has been deleted successfully!')
+        messages.success(request, f'Item "{item_name.title()}" has been deleted successfully!')
         return redirect('home')  # Redirect to avoid resubmission issues
     lists = List.objects.order_by('-name')
     context = {'title': 'home', 'lists': lists}
